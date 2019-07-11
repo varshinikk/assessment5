@@ -1,8 +1,19 @@
 import mongoose from 'mongoose'
 import downloadSchema from '../models/downloadModel'
- 
+
+// var bcrypt = require('bcryptjs');
+
 const Download = mongoose.model('Download', downloadSchema)
  
+// module.exports.addNewDownload = function(newUser, callback){
+//     bcrypt.genSalt(10, function(err, salt) {
+//     bcrypt.hash(newUser.Password, salt, function(err, hash) {
+//     newUser.Password = hash;
+//     newUser.save(callback);
+//     });
+//     });
+//     }
+
 // add new download to the database
 exports.addNewDownload = (req, res) => {
     // console.log("hii")

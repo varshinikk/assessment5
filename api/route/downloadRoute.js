@@ -2,14 +2,15 @@ import { addNewDownload, getDownloads, getDownload, updateDownload, deleteDownlo
 const { check, validationResult } = require('express-validator');
 
 const routes = (app) => {
-  app.route('/test')
+  app.route('/signup')
     .get(getDownloads)
   // .post(addNewDownload)
 
-  app.post('/test', [
+  app.post('/signup', [
     check('Firstname').isEmpty().trim(),
     check('Lastname').isEmpty().trim(),
     check('Email').isEmpty().trim(),
+    check('Email').isEmail(),
     check('Password').isLength({max : 8, min : 5}).isEmpty().trim(),
     check('ConformPassword').isEmpty().trim()
   ], addNewDownload, (req, res) => {
@@ -28,10 +29,11 @@ const routes = (app) => {
     }).then(test => res.json(test));
   });
 
-  app.route('/test/:id')
+  app.route('/signup/:id')
     .get(getDownload)
     .put(updateDownload)
     .delete(deleteDownload)
+    
 }
 
 export default routes;

@@ -1,8 +1,6 @@
 import mongoose from 'mongoose'
-// var bcrypt = require('bcryptjs');
-// mongoose.set('useCreateIndex', true);
 
-const Schema = mongoose.Schema
+var Schema = mongoose.Schema
  
 const DownloadSchema = new Schema({
     Firstname: {
@@ -16,15 +14,12 @@ const DownloadSchema = new Schema({
     Email: {
         type: String,
         match: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+        isEmail: true,
         unique: true,
-        // useCreateIndex: true,
         required: "enter email"    
     },
     Password: {
         type: String,
-        match: /(?=.*[a-zA-Z])(?=.*[0-9]+).*/,
-        minlength: 5,
-        maxlength: 8,
         required: "enter password"
     },
     ConformPassword: {
@@ -34,5 +29,3 @@ const DownloadSchema = new Schema({
 }, { timestamps: {} });
 
 export default DownloadSchema;
-
-// var User = module.exports = mongoose.model('User', DownloadSchema);
